@@ -16,15 +16,25 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import {Button,Input,Overlay} from 'react-native-elements'
 // import MapView from 'react-native-maps'
 import { NavigationActions } from 'react-navigation';
-
+import {Toast} from '@ant-design/react-native'
+// import console = require('console');
 class Car extends Component{
-   constructor(){
-       super()
+   constructor(props){
+       super(props)
        this.state={
          yl_show:false
        }
    }
 
+ search_info=()=>{
+     console.log('vin',this.state.vin)
+      
+   if(this.state.vin==undefined||this.state.vin==''){
+     Alert.alert('车架号码不能为空','',[{'text':'知道了',onPress:()=>{}}])
+   }else{
+       this.props.navigation.navigate('Result')
+   }
+ }  
    render(){
        return(
        <SafeAreaView style={{flex:1,}}>
@@ -49,8 +59,19 @@ class Car extends Component{
 
           <Input clearButtonMode={'always'} containerStyle={{marginTop:20}} 
              placeholder='请输入17位的车架号码(VIN码)'
+
+             onChangeText={(vin)=>{
+                 console.log(vin)
+                this.setState({vin})
+             }}
           />
-          <Button title='立即查询' buttonStyle={{marginTop:20,backgroundColor:qq.q_color}}/>
+          <Button title='立即查询' buttonStyle={{marginTop:20,backgroundColor:qq.q_color}} 
+            onPress={()=>{
+                Toast.success('Load success !!!', 1);
+                Toast.fail('Load failed !!!');
+              this.search_info()
+            }}
+          />
           <View style={{width:'100%',
           alignItems:'center',marginTop:20,
            justifyContent:'center',
@@ -58,9 +79,8 @@ class Car extends Component{
           <Text style={{color:'#E67E22'}}>目前可查询2014年以后(含2014年)的车辆召回信息</Text>
           </View>
 
-          <TouchableOpacity style={{
-              width:'100%',alignItems:'center',justifyContent:'center',
-              padding:20
+          <TouchableOpacity style={styles.zhao} onPress={()=>{
+              this.props.navigation.navigate('Zhao')
           }}>
               <Text style={{fontSize:16,color:qq.q_color}}>汽车召回小知识>></Text>
           </TouchableOpacity>
@@ -87,12 +107,16 @@ class Car extends Component{
 }
 export default Car
 const styles=StyleSheet.create({
+    zhao:{
+        width:'100%',alignItems:'center',justifyContent:'center',
+        padding:20
+    },
       wa_view:{
         backgroundColor:qq.q_bg,flex:1,width:'100%',alignItems:'center'
       }  ,
       under:{
         width:qq.q_w*.94,padding:10,backgroundColor:'white',borderRadius:8,
-        marginTop:-qq.q_h*.05
+        // marginTop:-qq.q_h*.05
       },
       to:{
         flexDirection:'row',justifyContent:'space-between',alignItems:'center'

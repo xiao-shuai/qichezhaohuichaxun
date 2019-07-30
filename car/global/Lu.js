@@ -5,13 +5,30 @@ import {
      createStackNavigator 
     } from 'react-navigation';
 import Car from '../car/Car'
-
+import Zhao from '../car/Zhao'
+import Result from '../car/Result'
  const ROUTE_=createStackNavigator({
     Car:{
         screen:Car,
         navigationOptions:()=>({
             header:null,
             headerBackTitle:null,
+        })
+      },
+      Zhao:{
+        screen:Zhao,
+        navigationOptions:()=>({
+            // header:null,
+            headerBackTitle:null,
+            title:'汽车召回小知识'
+        })
+      },
+      Result:{
+        screen:Result,
+        navigationOptions:()=>({
+           
+            headerBackTitle:null,
+            title:'召回查询结果'
         })
       },
  
