@@ -28,7 +28,7 @@ class Car extends Component{
 
  search_info=()=>{
      console.log('vin',this.state.vin)
-      
+    //  Toast.loading('232')
    if(this.state.vin==undefined||this.state.vin==''){
      Alert.alert('车架号码不能为空','',[{'text':'知道了',onPress:()=>{}}])
    }else{
@@ -116,7 +116,7 @@ const styles=StyleSheet.create({
       }  ,
       under:{
         width:qq.q_w*.94,padding:10,backgroundColor:'white',borderRadius:8,
-        // marginTop:-qq.q_h*.05
+        marginTop:-qq.q_h*.05
       },
       to:{
         flexDirection:'row',justifyContent:'space-between',alignItems:'center'

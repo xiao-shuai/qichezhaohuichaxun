@@ -22,7 +22,14 @@ class Result extends Component{
           
         }
     }
-
+componentWillMount(){
+    fetch('https://www.easy-mock.com/mock/5d40175076bc4e7ad6696209/car/getcar')
+    .then(res=>res.json())
+    .then(res=>{})
+    .catch(err=>{
+  
+    })
+}
     render(){
         return(
         <SafeAreaView style={{flex:1}}>
