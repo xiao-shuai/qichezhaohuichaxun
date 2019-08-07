@@ -88,7 +88,7 @@ class Car extends Component{
          </View>
          
          </View>
-         <Overlay isVisible={this.state.yl_show} overlayStyle={{padding:10,height:qq.q_h*.35}} >
+         <Overlay isVisible={this.state.yl_show} overlayStyle={{padding:10,height:qq.q_h*.4}} >
          <View>
              <View style={{width:'100%',alignItems:'center',padding:10,}}>
                  <Text>示例图片</Text>

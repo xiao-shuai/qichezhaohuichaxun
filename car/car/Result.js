@@ -19,7 +19,7 @@ class Result extends Component{
     constructor(props){
         super(props)
         this.state={
-          
+           show:true
         }
     }
 componentWillMount(){
@@ -30,7 +30,24 @@ componentWillMount(){
   
     })
 }
+componentDidMount(){
+    fetch('https://www.easy-mock.com/mock/5d40175076bc4e7ad6696209/car/getcar')
+    .then(res=>res.json())
+    .then(res=>{
+     this.setState({show:false})
+    })
+    .catch(err=>{
+  
+    })
+}
     render(){
+        if(this.state.show){
+         return(
+         <SafeAreaView style={{flex:1,alignItems:'center'}}>
+           <ActivityIndicator size={'large'} style={{marginTop:qq.q_h*.2}}/>
+         </SafeAreaView>
+         )
+        }
         return(
         <SafeAreaView style={{flex:1}}>
             <View style={{flex:1,width:'100%',backgroundColor:qq.q_bg,}}>
